@@ -1,0 +1,21 @@
+<html>
+<head>
+<meta charset="utf-8" />
+<script src='http://code.jquery.com/jquery-latest.js'></script>
+<script>
+$(function(){
+    var $wori=$('body :not(:has(#area),#area)')
+    $wori.each(function(){
+        alert($(this).attr('id'))
+    })
+})
+</script>
+</head>
+<body>
+<div id='a'>123</div>
+<div id='b'>456</div>
+<div id="div1">
+<textarea id="area"></textarea>
+</div>
+</body>
+</html>

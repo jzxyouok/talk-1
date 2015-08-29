@@ -1,3 +1,37 @@
+<?php /* Smarty version 3.1.27, created on 2015-08-29 15:10:29
+         compiled from "D:\soft\xampp\htdocs\talk\templates\page.tpl" */ ?>
+<?php
+/*%%SmartyHeaderCode:2508655e1af4598f8d8_68801683%%*/
+if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+$_valid = $_smarty_tpl->decodeProperties(array (
+  'file_dependency' => 
+  array (
+    '6e7602d571abade9388b40bdaac12c8988def7ff' => 
+    array (
+      0 => 'D:\\soft\\xampp\\htdocs\\talk\\templates\\page.tpl',
+      1 => 1440853828,
+      2 => 'file',
+    ),
+  ),
+  'nocache_hash' => '2508655e1af4598f8d8_68801683',
+  'variables' => 
+  array (
+    'head_bg' => 0,
+    'user' => 0,
+    'talk' => 0,
+    'k' => 0,
+    'value' => 0,
+  ),
+  'has_nocache_code' => false,
+  'version' => '3.1.27',
+  'unifunc' => 'content_55e1af45a120e2_73360469',
+),false);
+/*/%%SmartyHeaderCode%%*/
+if ($_valid && !is_callable('content_55e1af45a120e2_73360469')) {
+function content_55e1af45a120e2_73360469 ($_smarty_tpl) {
+
+$_smarty_tpl->properties['nocache_hash'] = '2508655e1af4598f8d8_68801683';
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +39,9 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>我的爱车有话说</title>
-<script src="static/js/jquery-1.11.3.js"></script>
+<?php echo '<script'; ?>
+ src="static/js/jquery-1.11.3.js"><?php echo '</script'; ?>
+>
 
 <style type="text/css">     
 .left {     
@@ -44,7 +80,8 @@ hr{
 /*顶部区域背景图片，只选择图片的部分作为背景*/
 .head_bg{
     display: block;/*一定要有*/
-    background-image:url({$head_bg});
+    background-image:url(<?php echo $_smarty_tpl->tpl_vars['head_bg']->value;?>
+);
     background-repeat: repeat-x;
     background-position: -100px -400px;/*要显示的区域坐标，左上角为原点*/
     
@@ -93,19 +130,22 @@ button{
 
 </style>
 
-    <script>
+    <?php echo '<script'; ?>
+>
         var flag = 1;
         function change(){
             moment = document.getElementById("moment").childNodes;
             if(flag == 1){
                 for(i=0; i<moment.length; i++){
-                    if(moment[i].id !== undefined && moment[i].id!="{$user['name']}"){
+                    if(moment[i].id !== undefined && moment[i].id!="<?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
+"){
                         moment[i].style.visibility="hidden";
                     }
                 }
             }else{
                 for(i=0; i<moment.length; i++){
-                    if(moment[i].id !== undefined && moment[i].id!="{$user['name']}"){
+                    if(moment[i].id !== undefined && moment[i].id!="<?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
+"){
                         moment[i].style.visibility="";
                     }
                 }
@@ -123,7 +163,8 @@ button{
             change();
             flag = 1;
         }
-    </script>
+    <?php echo '</script'; ?>
+>
 
 </head>
 
@@ -136,10 +177,14 @@ button{
             <input type="file" class="input-file" data-role="uploader" accept="image/*" style="display:none">
         </label>
     </div>
-    <table class="user" id="{$user['name']}">
+    <table class="user" id="<?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
+">
         <tr>
-            <td><img src="{$user["avatar"]}"></td>
-            <td><span class="signature">{$user["signature"]}</span><br/><span class="username">{$user["name"]}</span></td>
+            <td><img src="<?php echo $_smarty_tpl->tpl_vars['user']->value["avatar"];?>
+"></td>
+            <td><span class="signature"><?php echo $_smarty_tpl->tpl_vars['user']->value["signature"];?>
+</span><br/><span class="username"><?php echo $_smarty_tpl->tpl_vars['user']->value["name"];?>
+</span></td>
         </tr>
     </table>
     
@@ -150,18 +195,39 @@ button{
 
     <!-- begin 用户发表的状态 -->
     <div id="moment">
-        {foreach from=$talk key=k item=value}
-        <div id="{$k}">
+        <?php
+$_from = $_smarty_tpl->tpl_vars['talk']->value;
+if (!is_array($_from) && !is_object($_from)) {
+settype($_from, 'array');
+}
+$_smarty_tpl->tpl_vars['value'] = new Smarty_Variable;
+$_smarty_tpl->tpl_vars['value']->_loop = false;
+$_smarty_tpl->tpl_vars['k'] = new Smarty_Variable;
+foreach ($_from as $_smarty_tpl->tpl_vars['k']->value => $_smarty_tpl->tpl_vars['value']->value) {
+$_smarty_tpl->tpl_vars['value']->_loop = true;
+$foreach_value_Sav = $_smarty_tpl->tpl_vars['value'];
+?>
+        <div id="<?php echo $_smarty_tpl->tpl_vars['k']->value;?>
+">
             <table class="talk">
                 <tr>
-                    <td><img src="{$value["avatar"]}" class="avatar"></td>
-                    <td><span class="name">{$k}</span><br/><span>{$value["content"]}</span></td>
+                    <td><img src="<?php echo $_smarty_tpl->tpl_vars['value']->value["avatar"];?>
+" class="avatar"></td>
+                    <td><span class="name"><?php echo $_smarty_tpl->tpl_vars['k']->value;?>
+</span><br/><span><?php echo $_smarty_tpl->tpl_vars['value']->value["content"];?>
+</span></td>
                 </tr>
             </table>
             <hr style="height:1px;border:none;border-top:1px solid #dddddd;" />
         </div>
-        {/foreach}
+        <?php
+$_smarty_tpl->tpl_vars['value'] = $foreach_value_Sav;
+}
+?>
     </div>
     <!-- end 用户发表的状态 -->
 </body>
 </html>  
+<?php }
+}
+?>
