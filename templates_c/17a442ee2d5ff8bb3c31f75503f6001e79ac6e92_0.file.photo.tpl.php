@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2015-08-30 06:20:13
+<?php /* Smarty version 3.1.27, created on 2015-08-30 11:42:47
          compiled from "D:\soft\xampp\htdocs\talk\templates\photo.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:2488855e2a09d6a3d62_00005284%%*/
+/*%%SmartyHeaderCode:883455e2ec37d6c631_37348582%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '17a442ee2d5ff8bb3c31f75503f6001e79ac6e92' => 
     array (
       0 => 'D:\\soft\\xampp\\htdocs\\talk\\templates\\photo.tpl',
-      1 => 1440915610,
+      1 => 1440934963,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2488855e2a09d6a3d62_00005284',
+  'nocache_hash' => '883455e2ec37d6c631_37348582',
   'variables' => 
   array (
     'head_bg' => 0,
@@ -25,13 +25,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_55e2a09d71f947_43000135',
+  'unifunc' => 'content_55e2ec37e0d752_98382125',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_55e2a09d71f947_43000135')) {
-function content_55e2a09d71f947_43000135 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_55e2ec37e0d752_98382125')) {
+function content_55e2ec37e0d752_98382125 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '2488855e2a09d6a3d62_00005284';
+$_smarty_tpl->properties['nocache_hash'] = '883455e2ec37d6c631_37348582';
 ?>
 <!DOCTYPE html>
 <html>
@@ -42,6 +42,9 @@ $_smarty_tpl->properties['nocache_hash'] = '2488855e2a09d6a3d62_00005284';
 <title>我的爱车有话说</title>
 <?php echo '<script'; ?>
  src="static/js/jquery-1.11.3.js"><?php echo '</script'; ?>
+>
+<?php echo '<script'; ?>
+ type="text/javascript" src="static/js/preview.js"><?php echo '</script'; ?>
 >
 
 <style type="text/css">     
@@ -158,8 +161,41 @@ button{
 			$("#moment").hide();
 			//$("#main-search").css('position','fixed').css('top','0px').css('width','100%').css('z-index','999').show();
 			//$('#keywordBox').focus();
+
+            zz_append_thought_page();
 		})
 	})
+    function t(){
+        alert('test');
+    }
+    function zz_append_thought_page(){
+
+
+        var form = $('<form enctype="multipart/form-data" action="draft.php" method="post"></form>');
+
+        var up = $('<div id="up"></div>');
+        up.css('height','100%').css('top','0%').css('left','0').css('bottom', '0');
+        textarea = $('<textarea name="thought" rows="6" placeholder="这一刻的想法..."></textarea>');
+        textarea.css('width', '100%').css('font-size', '18px').css('border', '0px').css('font-size','18pt');
+        up.append(textarea);
+
+        var preview1 = $('<div id="preview1"></div>');
+        input = $('<input type="file" name="picture" id="icon1" accept="image/*"/>&nbsp;<button onclick="pv1.reset()">重置</button>');
+        preview = ('<div class="preview" id="pv1">');
+        preview1.append(input, preview);
+
+        var gray_region = $('<div></div>');
+        gray_region.css('background-color', '#eee').css('width', '100%').css('position', 'absolute').css('top','60%').css('left','0').css('bottom', '0');
+
+        var submit = $('<div id="submit"></div>');
+        submit.css('width','100%').css('position','absolute').css('top', '75%').css('left', '0').css('bottom','0');
+        input = $('<input type="submit" value="发表"/>');
+        input.css('float','right').css('margin-right', '10%').css('font-size','14pt').css('text-align','center').css('background','#FFF').css('border','1px solid #FF8700').css('-webkit-border-radius','2px').css('outline','none').css('color','#222').css('box-shadow','0 1px #ffa033 inset, 0px 1px 3px #bebdbd');
+        submit.append(input);
+        
+        form.append(up, preview1, gray_region, submit);
+        $("body").append(form);
+    }
 <?php echo '</script'; ?>
 >
 

@@ -71,7 +71,7 @@ $smarty->assign("head_bg", $head_bg);
 $smarty->assign("user", $user);
 $smarty->assign("talk", $talk);
 $smarty->assign("moment_type", $moment_type);
-$smarty->display("photo.tpl");
+$smarty->display("moment.tpl");
 
 $smarty->caching = true;
 ?>
