@@ -11,13 +11,20 @@ $user=array(
 	);
 
 if($_POST["moment_type"]=='' || $_POST["moment_type"]=='同品牌'){
+	/*
+	需要修改：改成从数据库中查询“和当前用户的车品牌相同用户的moment”
+	*/
 	$talk=array(
 		"爱车控"=>array(
 			"avatar"=>"static/img/1.jpg",
 			"content"=>"已准点下班，网上准点开黑！战友们加油！！已准点下班，网上准点开黑！战友们加油！！已准点下班，网上准点开黑！战友们加油！！已准点下班，网上准点开黑！战友们加油！！"
 		)
 	);
+	$moment_type="same_brand";
 }else if($_POST["moment_type"]=='看全部'){
+	/*
+	需要修改：改成从数据库中查询“所有用户的moment”
+	*/
 	$talk=array(
 		"爱车控"=>array(
 			"avatar"=>"static/img/1.jpg",
@@ -57,11 +64,13 @@ if($_POST["moment_type"]=='' || $_POST["moment_type"]=='同品牌'){
 		)
 
 	);
+	$moment_type="all_brand";
 }
 
 $smarty->assign("head_bg", $head_bg);
 $smarty->assign("user", $user);
 $smarty->assign("talk", $talk);
+$smarty->assign("moment_type", $moment_type);
 $smarty->display("page.tpl");
 
 $smarty->caching = true;

@@ -97,9 +97,22 @@ button{
 
 </style>
 
+<script type="text/javascript">
+    function paint(){
+        //alert('{$moment_type}');
+        moment_type = '{$moment_type}';
+        g='#'+ moment_type;
+        //if(moment_type=="same_brand"){
+        $(g).css("background", "#ffa033");
+        $(g).css("color", "#FFFFFF");    
+
+        
+    }
+</script>
+
 </head>
 
-<body>
+<body onload="paint()">
 
     <!-- begin 顶部 -->
     <div class="head_bg">
@@ -117,8 +130,8 @@ button{
     
     <div align="center" id="switch">
         <form action="publish.php" method="post">
-            <input type="submit" name="moment_type" value="同品牌" class="btn"/> 
-            <input type="submit" name="moment_type" value="看全部" class="btn"/> 
+            <input type="submit" name="moment_type" value="同品牌" class="btn" id="same_brand" /> 
+            <input type="submit" name="moment_type" value="看全部" class="btn" id="all_brand"/> 
         </form>
     </div>
     <!-- end 顶部 -->

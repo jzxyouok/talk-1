@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2015-08-30 02:55:49
+<?php /* Smarty version 3.1.27, created on 2015-08-30 03:54:01
          compiled from "D:\soft\xampp\htdocs\talk\templates\page.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:225255e270b5d9be24_17255290%%*/
+/*%%SmartyHeaderCode:1174155e27e5965abc3_44905180%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,14 +9,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6e7602d571abade9388b40bdaac12c8988def7ff' => 
     array (
       0 => 'D:\\soft\\xampp\\htdocs\\talk\\templates\\page.tpl',
-      1 => 1440901948,
+      1 => 1440906794,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '225255e270b5d9be24_17255290',
+  'nocache_hash' => '1174155e27e5965abc3_44905180',
   'variables' => 
   array (
     'head_bg' => 0,
+    'moment_type' => 0,
     'user' => 0,
     'talk' => 0,
     'k' => 0,
@@ -24,13 +25,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_55e270b5e39bf1_29797634',
+  'unifunc' => 'content_55e27e59705151_72234396',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_55e270b5e39bf1_29797634')) {
-function content_55e270b5e39bf1_29797634 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_55e27e59705151_72234396')) {
+function content_55e27e59705151_72234396 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '225255e270b5d9be24_17255290';
+$_smarty_tpl->properties['nocache_hash'] = '1174155e27e5965abc3_44905180';
 ?>
 <!DOCTYPE html>
 <html>
@@ -134,9 +135,26 @@ button{
 
 </style>
 
+<?php echo '<script'; ?>
+ type="text/javascript">
+    function paint(){
+        //alert('<?php echo $_smarty_tpl->tpl_vars['moment_type']->value;?>
+');
+        moment_type = '<?php echo $_smarty_tpl->tpl_vars['moment_type']->value;?>
+';
+        g='#'+ moment_type;
+        //if(moment_type=="same_brand"){
+        $(g).css("background", "#ffa033");
+        $(g).css("color", "#FFFFFF");    
+
+        
+    }
+<?php echo '</script'; ?>
+>
+
 </head>
 
-<body>
+<body onload="paint()">
 
     <!-- begin 顶部 -->
     <div class="head_bg">
@@ -158,8 +176,8 @@ button{
     
     <div align="center" id="switch">
         <form action="publish.php" method="post">
-            <input type="submit" name="moment_type" value="同品牌" class="btn"/> 
-            <input type="submit" name="moment_type" value="看全部" class="btn"/> 
+            <input type="submit" name="moment_type" value="同品牌" class="btn" id="same_brand" /> 
+            <input type="submit" name="moment_type" value="看全部" class="btn" id="all_brand"/> 
         </form>
     </div>
     <!-- end 顶部 -->
