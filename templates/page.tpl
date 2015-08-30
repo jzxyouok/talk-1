@@ -72,7 +72,7 @@ table{
 }
 
 
-button{
+.btn{
     border-radius: 5px;
     font-size:14pt;
     text-align:center;
@@ -91,39 +91,11 @@ button{
 }
 */
 
+#switch span a{
+    text-decoration: none;
+}
+
 </style>
-
-    <script>
-        var flag = 1;
-        function change(){
-            moment = document.getElementById("moment").childNodes;
-            if(flag == 1){
-                for(i=0; i<moment.length; i++){
-                    if(moment[i].id !== undefined && moment[i].id!="{$user['name']}"){
-                        moment[i].style.visibility="hidden";
-                    }
-                }
-            }else{
-                for(i=0; i<moment.length; i++){
-                    if(moment[i].id !== undefined && moment[i].id!="{$user['name']}"){
-                        moment[i].style.visibility="";
-                    }
-                }
-            }
-        }
-
-        function same_brand(){
-            flag = 1;
-            change();
-            flag = 0;
-        }
-
-        function all_brand(){
-            flag = 0;
-            change();
-            flag = 1;
-        }
-    </script>
 
 </head>
 
@@ -143,8 +115,11 @@ button{
         </tr>
     </table>
     
-    <div align="center">
-        <button onclick="same_brand()">同品牌</button><button onclick="all_brand()">看全部</button>
+    <div align="center" id="switch">
+        <form action="publish.php" method="post">
+            <input type="submit" name="moment_type" value="同品牌" class="btn"/> 
+            <input type="submit" name="moment_type" value="看全部" class="btn"/> 
+        </form>
     </div>
     <!-- end 顶部 -->
 

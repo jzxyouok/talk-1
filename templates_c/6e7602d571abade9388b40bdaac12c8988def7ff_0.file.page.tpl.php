@@ -1,7 +1,7 @@
-<?php /* Smarty version 3.1.27, created on 2015-08-29 15:10:29
+<?php /* Smarty version 3.1.27, created on 2015-08-30 02:55:49
          compiled from "D:\soft\xampp\htdocs\talk\templates\page.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:2508655e1af4598f8d8_68801683%%*/
+/*%%SmartyHeaderCode:225255e270b5d9be24_17255290%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
@@ -9,11 +9,11 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '6e7602d571abade9388b40bdaac12c8988def7ff' => 
     array (
       0 => 'D:\\soft\\xampp\\htdocs\\talk\\templates\\page.tpl',
-      1 => 1440853828,
+      1 => 1440901948,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '2508655e1af4598f8d8_68801683',
+  'nocache_hash' => '225255e270b5d9be24_17255290',
   'variables' => 
   array (
     'head_bg' => 0,
@@ -24,13 +24,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_55e1af45a120e2_73360469',
+  'unifunc' => 'content_55e270b5e39bf1_29797634',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_55e1af45a120e2_73360469')) {
-function content_55e1af45a120e2_73360469 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_55e270b5e39bf1_29797634')) {
+function content_55e270b5e39bf1_29797634 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '2508655e1af4598f8d8_68801683';
+$_smarty_tpl->properties['nocache_hash'] = '225255e270b5d9be24_17255290';
 ?>
 <!DOCTYPE html>
 <html>
@@ -109,7 +109,7 @@ table{
 }
 
 
-button{
+.btn{
     border-radius: 5px;
     font-size:14pt;
     text-align:center;
@@ -128,43 +128,11 @@ button{
 }
 */
 
+#switch span a{
+    text-decoration: none;
+}
+
 </style>
-
-    <?php echo '<script'; ?>
->
-        var flag = 1;
-        function change(){
-            moment = document.getElementById("moment").childNodes;
-            if(flag == 1){
-                for(i=0; i<moment.length; i++){
-                    if(moment[i].id !== undefined && moment[i].id!="<?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
-"){
-                        moment[i].style.visibility="hidden";
-                    }
-                }
-            }else{
-                for(i=0; i<moment.length; i++){
-                    if(moment[i].id !== undefined && moment[i].id!="<?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
-"){
-                        moment[i].style.visibility="";
-                    }
-                }
-            }
-        }
-
-        function same_brand(){
-            flag = 1;
-            change();
-            flag = 0;
-        }
-
-        function all_brand(){
-            flag = 0;
-            change();
-            flag = 1;
-        }
-    <?php echo '</script'; ?>
->
 
 </head>
 
@@ -188,8 +156,11 @@ button{
         </tr>
     </table>
     
-    <div align="center">
-        <button onclick="same_brand()">同品牌</button><button onclick="all_brand()">看全部</button>
+    <div align="center" id="switch">
+        <form action="publish.php" method="post">
+            <input type="submit" name="moment_type" value="同品牌" class="btn"/> 
+            <input type="submit" name="moment_type" value="看全部" class="btn"/> 
+        </form>
     </div>
     <!-- end 顶部 -->
 
