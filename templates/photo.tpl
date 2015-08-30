@@ -42,7 +42,7 @@ hr{
 }
 
 /*顶部区域背景图片，只选择图片的部分作为背景*/
-.head_bg{
+#head_bg{
     display: block;/*一定要有*/
     background-image:url({$head_bg});
     background-repeat: repeat-x;
@@ -106,6 +106,19 @@ button{
         $(g).css("background", "#ffa033");
         $(g).css("color", "#FFFFFF");
     }
+
+	$(function() {
+		$('#photo').click(function(){
+			//alert('ll');
+			//$(".mm-page").children('div').hide();
+			$("#head_bg").hide();
+			$("#myself").hide();
+			$("#switch").hide();
+			$("#moment").hide();
+			//$("#main-search").css('position','fixed').css('top','0px').css('width','100%').css('z-index','999').show();
+			//$('#keywordBox').focus();
+		})
+	})
 </script>
 
 </head>
@@ -113,21 +126,21 @@ button{
 <body onload="paint()">
 
     <!-- begin 顶部 -->
-    <div class="head_bg">
-        <label class="btn-file" data-role="add">
-            <img align="right" src="static/img/camera.png" height="20%"/>
-            <input type="file" class="input-file" data-role="uploader" accept="image/*" style="display:none" />
-        </label>
+    <div id="head_bg">
+        <img align="right" src="static/img/camera.png" height="20%" id="photo"/>
+    </div>    
+        
+    <div id="myself">
+	    <table class="user" id="{$user['name']}">
+	        <tr>
+	            <td><img src="{$user["avatar"]}"></td>
+	            <td><span class="signature">{$user["signature"]}</span><br/><span class="username">{$user["name"]}</span></td>
+	        </tr>
+	    </table>
     </div>
-    <table class="user" id="{$user['name']}">
-        <tr>
-            <td><img src="{$user["avatar"]}"></td>
-            <td><span class="signature">{$user["signature"]}</span><br/><span class="username">{$user["name"]}</span></td>
-        </tr>
-    </table>
-    
+
     <div align="center" id="switch">
-        <form action="publish.php" method="post">
+        <form action="photo.php" method="post">
             <input type="submit" name="moment_type" value="同品牌" class="btn" id="same_brand" /> 
             <input type="submit" name="moment_type" value="看全部" class="btn" id="all_brand"/> 
         </form>

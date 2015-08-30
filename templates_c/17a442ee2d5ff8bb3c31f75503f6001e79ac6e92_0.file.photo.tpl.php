@@ -1,19 +1,19 @@
-<?php /* Smarty version 3.1.27, created on 2015-08-30 06:10:49
-         compiled from "D:\soft\xampp\htdocs\talk\templates\page.tpl" */ ?>
+<?php /* Smarty version 3.1.27, created on 2015-08-30 06:20:13
+         compiled from "D:\soft\xampp\htdocs\talk\templates\photo.tpl" */ ?>
 <?php
-/*%%SmartyHeaderCode:770755e29e697926e6_42185161%%*/
+/*%%SmartyHeaderCode:2488855e2a09d6a3d62_00005284%%*/
 if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '6e7602d571abade9388b40bdaac12c8988def7ff' => 
+    '17a442ee2d5ff8bb3c31f75503f6001e79ac6e92' => 
     array (
-      0 => 'D:\\soft\\xampp\\htdocs\\talk\\templates\\page.tpl',
-      1 => 1440910889,
+      0 => 'D:\\soft\\xampp\\htdocs\\talk\\templates\\photo.tpl',
+      1 => 1440915610,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '770755e29e697926e6_42185161',
+  'nocache_hash' => '2488855e2a09d6a3d62_00005284',
   'variables' => 
   array (
     'head_bg' => 0,
@@ -25,13 +25,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
   'version' => '3.1.27',
-  'unifunc' => 'content_55e29e698188b0_67943756',
+  'unifunc' => 'content_55e2a09d71f947_43000135',
 ),false);
 /*/%%SmartyHeaderCode%%*/
-if ($_valid && !is_callable('content_55e29e698188b0_67943756')) {
-function content_55e29e698188b0_67943756 ($_smarty_tpl) {
+if ($_valid && !is_callable('content_55e2a09d71f947_43000135')) {
+function content_55e2a09d71f947_43000135 ($_smarty_tpl) {
 
-$_smarty_tpl->properties['nocache_hash'] = '770755e29e697926e6_42185161';
+$_smarty_tpl->properties['nocache_hash'] = '2488855e2a09d6a3d62_00005284';
 ?>
 <!DOCTYPE html>
 <html>
@@ -79,7 +79,7 @@ hr{
 }
 
 /*顶部区域背景图片，只选择图片的部分作为背景*/
-.head_bg{
+#head_bg{
     display: block;/*一定要有*/
     background-image:url(<?php echo $_smarty_tpl->tpl_vars['head_bg']->value;?>
 );
@@ -145,10 +145,21 @@ button{
         g='#'+ moment_type;
         //if(moment_type=="same_brand"){
         $(g).css("background", "#ffa033");
-        $(g).css("color", "#FFFFFF");    
-
-        
+        $(g).css("color", "#FFFFFF");
     }
+
+	$(function() {
+		$('#photo').click(function(){
+			//alert('ll');
+			//$(".mm-page").children('div').hide();
+			$("#head_bg").hide();
+			$("#myself").hide();
+			$("#switch").hide();
+			$("#moment").hide();
+			//$("#main-search").css('position','fixed').css('top','0px').css('width','100%').css('z-index','999').show();
+			//$('#keywordBox').focus();
+		})
+	})
 <?php echo '</script'; ?>
 >
 
@@ -157,25 +168,25 @@ button{
 <body onload="paint()">
 
     <!-- begin 顶部 -->
-    <div class="head_bg">
-        <label class="btn-file" data-role="add">
-            <img align="right" src="static/img/camera.png" height="20%"/>
-            <input type="file" class="input-file" data-role="uploader" accept="image/*" style="display:none" />
-        </label>
-    </div>
-    <table class="user" id="<?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
+    <div id="head_bg">
+        <img align="right" src="static/img/camera.png" height="20%" id="photo"/>
+    </div>    
+        
+    <div id="myself">
+	    <table class="user" id="<?php echo $_smarty_tpl->tpl_vars['user']->value['name'];?>
 ">
-        <tr>
-            <td><img src="<?php echo $_smarty_tpl->tpl_vars['user']->value["avatar"];?>
+	        <tr>
+	            <td><img src="<?php echo $_smarty_tpl->tpl_vars['user']->value["avatar"];?>
 "></td>
-            <td><span class="signature"><?php echo $_smarty_tpl->tpl_vars['user']->value["signature"];?>
+	            <td><span class="signature"><?php echo $_smarty_tpl->tpl_vars['user']->value["signature"];?>
 </span><br/><span class="username"><?php echo $_smarty_tpl->tpl_vars['user']->value["name"];?>
 </span></td>
-        </tr>
-    </table>
-    
+	        </tr>
+	    </table>
+    </div>
+
     <div align="center" id="switch">
-        <form action="publish.php" method="post">
+        <form action="photo.php" method="post">
             <input type="submit" name="moment_type" value="同品牌" class="btn" id="same_brand" /> 
             <input type="submit" name="moment_type" value="看全部" class="btn" id="all_brand"/> 
         </form>
