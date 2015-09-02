@@ -95,7 +95,6 @@ button{
 #switch span a{
     text-decoration: none;
 }
-
 </style>
 
 <script type="text/javascript">
@@ -107,63 +106,6 @@ button{
         $(g).css("background", "#ffa033");
         $(g).css("color", "#FFFFFF");
     }
-
-	$(function() {
-		$('#photo').click(function(){
-			//alert('ll');
-			//$(".mm-page").children('div').hide();
-			$("#head_bg").hide();
-			$("#myself").hide();
-			$("#switch").hide();
-			$("#moment").hide();
-			//$("#main-search").css('position','fixed').css('top','0px').css('width','100%').css('z-index','999').show();
-			//$('#keywordBox').focus();
-
-            zz_append_thought_page();
-            fuck();
-		})
-	})
-    function fuck(){
-        
-        var get = function(id){
-            return document.getElementById(id);
-        };
-        Preview.defaults.onlegal = false;
-        Preview.defaults.onillegal = true;
-        var pv1 = new Preview(get('icon1'), get('pv1'), {
-            onlegal: true,
-            onillegal: false 
-        });
-    }
-    function zz_append_thought_page(){
-
-
-        var form = $('<form enctype="multipart/form-data" action="draft.php" method="post"></form>');
-
-        var up = $('<div id="up"></div>');
-        up.css('height','100%').css('top','0%').css('left','0').css('bottom', '0');
-        textarea = $('<textarea name="thought" rows="6" placeholder="这一刻的想法..."></textarea>');
-        textarea.css('width', '100%').css('font-size', '18px').css('border', '0px').css('font-size','18pt');
-        up.append(textarea);
-
-        var preview1 = $('<div id="preview1"></div>');
-        input = $('<input type="file" name="picture" id="icon1" accept="image/*"/>&nbsp;<button onclick="pv1.reset()">重置</button>');
-        preview = ('<div id="pv1"></div>');
-        preview1.css('width','100px').css('height','100px');
-        preview1.append(input, preview);
-
-        var gray_region = $('<div></div>');
-        gray_region.css('background-color', '#eee').css('width', '100%').css('position', 'absolute').css('top','60%').css('left','0').css('bottom', '0');
-
-        var submit = $('<div id="submit"></div>');
-        submit.css('width','100%').css('position','absolute').css('top', '75%').css('left', '0').css('bottom','0');
-        input = $('<input type="submit" value="发表"/>');
-        input.css('float','right').css('margin-right', '10%').css('font-size','14pt').css('text-align','center').css('background','#FFF').css('border','1px solid #FF8700').css('-webkit-border-radius','2px').css('outline','none').css('color','#222').css('box-shadow','0 1px #ffa033 inset, 0px 1px 3px #bebdbd');
-        submit.append(input);
-        
-        form.append(up, preview1, gray_region, submit);
-        $("body").append(form);
-    }
 </script>
 
 </head>
@@ -172,7 +114,9 @@ button{
 
     <!-- begin 顶部 -->
     <div id="head_bg">
+		<a href = "draft.html">
         <img align="right" src="static/img/camera.png" height="20%" id="photo"/>
+		</a>
     </div>    
         
     <div id="myself">
@@ -199,7 +143,15 @@ button{
             <table class="talk">
                 <tr>
                     <td><img src="{$value["avatar"]}" class="avatar"></td>
-                    <td><span class="name">{$k}</span><br/><span>{$value["content"]}</span></td>
+                    <td>
+                        <span class="name">{$value['username']}</span><br/>
+                        <span>{$value["content"]}</span><br/>
+                        <span>
+                            {foreach from=$value["pictures"] item=v}
+                                <img src="{$v}" height="130em" width="130em"/>
+                            {/foreach}
+                        </span>
+                    </td>
                 </tr>
             </table>
             <hr style="height:1px;border:none;border-top:1px solid #dddddd;" />
@@ -207,17 +159,13 @@ button{
         {/foreach}
     </div>
     <!-- end 用户发表的状态 -->
+    
+    <!-- 测试显示图片 -->
+    <ul>
+        {foreach from=$test_img item=value}
+         <li><img src="{$value}"></li>        
+        {/foreach}
+    </ul>
 
-    <script type="text/javascript">
-        var get = function(id){
-            return document.getElementById(id);
-        };
-        Preview.defaults.onlegal = false;
-        Preview.defaults.onillegal = true;
-        var pv1 = new Preview(get('icon1'), get('pv1'), {
-            onlegal: true,
-            onillegal: false 
-        });
-    </script>
 </body>
 </html>  
